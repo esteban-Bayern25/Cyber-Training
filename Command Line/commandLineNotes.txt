@@ -1,0 +1,26 @@
+The shell
+
+Echo command -> repeats what you want
+
+Pwd -> print working directory shows the directory you are currently in 
+
+Cd -> change directory 
+
+. (current directory): This is the directory you are currently in.
+.. (previous directory): Takes you to the directory above your current one.
+~ (home directory): This directory defaults to your “home directory,” such as /home/pete.
+- (previous directory): This will take you to the previous directory you were just at.
+
+
+Ls -> list directories
+
+La -a -> find hidden flags/files
+
+Touch -> makes a file
+
+File	-> description of file contents
+
+Whatis -> brief description of command line programs
+
+
+
