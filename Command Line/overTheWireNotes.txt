@@ -1,0 +1,102 @@
+Level 0
+ssh -p 2220 bandit0@bandit.labs.overthewire.org
+
+Ssh secure shell in which you want to remotely access
+-p stands for port you specify port
+
+Find the readme file and cat to find password:ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+
+Level 1 -> 2
+Need to access the file "-"
+Since it's a special character you just need to do cat ./
+Password is : 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+
+Level 2->3
+
+You do a similar approach for this level: Notice that for space in file name want to use \
+MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+
+
+Level 3->4
+To get you need to find the hidden file so perform a ls -al
+Then you will see file then proceed to do a cat ./"name of hidden file"
+
+Password: 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+
+Level 4 -> 5
+To find the password there are multiple files with the same name
+Want to see the contents of the file so just file ./"name of file"
+
+Once you Sind a file with ASCII text then you have a readable password:
+4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+
+
+
+Level 5 -> 6
+Since a lot of files are similar and have a same structure need to use find command to narrow the serarch 
+find . -type f -size 1033c ! -executable -exec file '{}' \; | grep ASCII
+
+Once you find the file name and location the rest if history
+Password:
+HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+
+
+Level 6->7
+Since the password is on a server that needs to be found we running the following command with  : Search the entire server (/ is the root directory on Linux similar to the C:/ Drive on Windows)
+-type f : Search only for files (Exclude Directories)
+-user bandit7 : Search for files which are owned by user bandit7
+-group bandit6 : Search for files that belongs to the group bandit6
+-size 33c : Look for files that are exactly 33 bytes in size (Find uses “c” to represent size in bytes)
+
+This allows us to identify the location of the password
+Then once the location is found we use the cat command to find the password on that location
+morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+
+
+Level 7->8
+Since the file data.txt is a very large file with many different words and passwords using the command 
+grep millionth data.txt
+Grep allows us to print lines that match patterns 
+Sort - sort lines of text files
+millionth       dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+
+Allows us to find the specific password needed to be able to move one
+
+Level 8->9
+Very similar however with only finding the specific instance of the unique passwords that occurs once using the uniq -u command with the -u flag to print the unique line 
+So then to find in within the file 
+The command cat data.txt | sort | uniq -u 
+To help sort the data file line wise and find the password
+
+4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+
+
+Level 9->10
+Since the file is data that appears to be encrypted or at least not readable making it so where you change the file into a readable strings
+From there you can pipe grep given the hits with the "="
+
+FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+
+Level 10->11
+Since the file is encoded with base 64 ASCII values when you cat the file you only get the base64 encoded values in which you want to decode using:cat data.txt | base64 -d
+Base64 -d decodes the base64 value into a string or message that is readable
+The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+
+Level 11->12
+ROT12 is a type of cyber that shifts the characters
+Using a similar technique as above where you: cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+This allows itself to unscramble the file
+
+Level 12->13
+Some where repute task since th data.txt file was a hexdump text file that needed to be changed. This involved compressing and uncompressing files over again until we got a readable text file which was ASCII text. Following the initial steps and repetitive until we got a file for the password
+
+The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+
+Level 13->14
+We can use the SSH command with the -i flag to use the private key
+
+bandit13@bandit:~$ ssh -i sshkey.private -p 2220 bandit14@localhost
+
+
+Level 14->15
