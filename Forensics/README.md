@@ -6,7 +6,7 @@
 
 ## picoCTF Forensics Challenges
 
-Link to picoCTF folder: [picoCTF]{}
+Link to picoCTF folder: [picoCTF]{https://github.com/esteban-Bayern25/Cyber-Training/tree/main/Forensics/picoCTF}
 
 ### Riddle Registry
 1. download the pdf
