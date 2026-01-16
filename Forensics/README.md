@@ -35,3 +35,17 @@ where I then can use the cat command on the flag.txt file to get the hidden flag
 ``` (printf '\xff\xd8' && tail -c +3 file) > repair.jpg```
 this allows the image to be repaired
 4. Once the jpg file is repared you are then able to see the flag in the actual image
+
+### Flag in Flame
+1. Download file and observe that the file has a txt file that is very large ASCII
+2. Try to decode from a base64 into an image with informaiton using the command ``` cat logs.txt | base64 --decode > decoded.jpg``` which allowed an image to be created
+3. on this image was a long string of characters
+4. This needed to be decoded using hex (so converting from hext to text) ```echo '7069636F4354467B666F72656E736963735F616E616C797369735F69735F616D617A696E675F62653836303237397D' | xxd -r -p```
+5. There appears to be an issue with submisison with the flag: picoCTF{forensics_analysis_is_amazing_be860279}
+
+### CanYouSee 
+1. its a zip file in which you get a jpg file
+2. observe that there is an attribution URL that seems to be encoded
+3. It needs to be decoded from base64 in which I used CyberChef
+4. Note that when somthing ends with Cg== it implies possible a base64 encryption
+5. Once you decode you get the flag in the output
